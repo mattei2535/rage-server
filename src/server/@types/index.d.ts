@@ -1,6 +1,8 @@
+import '../database/schemes'
+
 declare global {
 	interface PlayerMp {
-		username: string;
+		info: UserInfo
 	}
 }
 
