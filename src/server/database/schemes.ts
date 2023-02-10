@@ -4,6 +4,9 @@ const { Schema } = mongoose;
 
 declare global {
     export interface UserInfo {
+        username: string
+        email: string
+        password: string
         money:  number
     }
 }
@@ -11,6 +14,9 @@ declare global {
 
 
 const AccountSchema = new Schema<UserInfo>({
+    username: {type: String, required: true},
+    email: {type: String, required: true},
+    password: {type: String, required: true},
     money: {type: Number, default: 0}
 })
 
