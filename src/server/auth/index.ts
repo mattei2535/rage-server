@@ -12,21 +12,27 @@ mp.events.add('playerReady', async (player: PlayerMp) => {
 })
 
 rpc.register('registerInfos', async ({username, email, password}) => {
-    const alreadyUser = await Account.findOne({username: username})
-    const alreadyMail = await Account.findOne({email: email})
-
-    if(alreadyUser!.username == username) return console.log('alreadyexists')
-    if(alreadyMail!.email == email) return console.log('emailalreadyexist')
-
+    try {
+        const alreadyUser = await Account.findOne({username: username}).exec()
+        const alreadyMail = await Account.findOne({email: email})
     
-    Account.create({username: username, email: email, password: password});
-    console.log(`New account was created with data: ${username},${email},${password}`);
+        if(alreadyUser?.username == username) return console.log('alreadyexists')
+        if(alreadyMail?.email == email) return console.log('emailalreadyexist')
+
+        Account.create({username: username, email: email, password: password});
+        console.log(`New account was created with data: ${username},${email},${password}`);
+
+    } catch (e) {
+        console.log(`[!] Account registering error: ${e}`)
+    }
 })
 
 rpc.register('checkLoginData', async ({username, password}) => {
     const User = await Account.findOne({username: username})
     const player = mp.players.at(0);
-    if (User && User.password == password) { rpc.callClient(player, 'loginAuthorization') }
+    if (User && User.password == password) { 
+        rpc.callClient(player, 'loginAuthorization')
+    }
     else return console.log('User sau Parola gresita')
 
 })

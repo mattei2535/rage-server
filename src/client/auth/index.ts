@@ -6,8 +6,12 @@ rpc.register('mti:authSystem', () => {
 });
 
 rpc.register('loginAuthorization', () => {
+        setTimeout(() => {
+                mp.gui.cursor.show(false, false)
+        }, 100)
         rpc.triggerBrowsers('loginAuthorization')
-})
+        
+});
 
 
 
