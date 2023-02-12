@@ -10,8 +10,6 @@ mp.events.add('playerReady', async (player: PlayerMp) => {
 
     rpc.callClient(player, 'mti:authSystem')
 
-    
-
 })
 
 rpc.register('registerInfos', async ({username, email, password}) => {

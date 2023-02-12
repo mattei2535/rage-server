@@ -2,9 +2,11 @@ import * as rpc from 'rage-rpc';
 const player = mp.players.local
 
 rpc.register('mti:authSystem', () => {
-        mp.gui.cursor.show(true, true)
-        player.freezePosition(true)
-        player.setInvincible(true)
+        setTimeout(() => {
+                mp.gui.cursor.show(true, true)
+                player.freezePosition(true)
+                player.setInvincible(true)
+        }, 100)
 
         rpc.triggerBrowsers('mti:authSystem');
 });
