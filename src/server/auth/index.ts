@@ -6,7 +6,7 @@ import * as rpc from 'rage-rpc'
 mp.events.add('playerReady', async (player: PlayerMp) => {
     player.model = mp.joaat('player_zero');
     player.spawn(new mp.Vector3(-425.517, 1123.620, 325.8543));
-
+    player.dimension = player.id + 1;
     rpc.callClient(player, 'mti:authSystem')
 
 })
@@ -32,6 +32,7 @@ rpc.register('checkLoginData', async ({username, password}) => {
     const player = mp.players.at(0);
     if (User && User.password == password) { 
         rpc.callClient(player, 'loginAuthorization')
+        player.dimension = 0;
     }
     else return console.log('User sau Parola gresita')
 
