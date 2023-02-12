@@ -7,7 +7,10 @@ mp.events.add('playerReady', async (player: PlayerMp) => {
     player.model = mp.joaat('player_zero');
     player.spawn(new mp.Vector3(-425.517, 1123.620, 325.8543));
     player.dimension = player.id + 1;
+
     rpc.callClient(player, 'mti:authSystem')
+
+    
 
 })
 
