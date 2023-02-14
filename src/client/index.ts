@@ -1,4 +1,5 @@
 import './systems/index'
+import './systems/apanel/index'
 
 // CEF CONNECTION
 
