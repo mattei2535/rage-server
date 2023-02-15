@@ -31,7 +31,7 @@ rpc.register('registerInfos', async ({username, email, password}) => {
 rpc.register('checkLoginData', async ({username, password}) => {
     const User = await Account.findOne({username: username})
     const player = mp.players.at(0);
-    if (User && User.password == password) { 
+    if (User && User.password == password) {
         rpc.callClient(player, 'loginAuthorization')
         player.dimension = 0;
         player.sendToast({type: "success", message: `Logged successfuly!`})

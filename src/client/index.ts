@@ -1,6 +1,5 @@
-import './systems/index'
-import './systems/apanel/index'
-import './utils/interfaces/interfaces'
+import './systems'
+import './utils'
 
 // CEF CONNECTION
 
