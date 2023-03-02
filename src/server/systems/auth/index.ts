@@ -7,7 +7,10 @@ mp.events.add('playerReady', async (player: PlayerMp) => {
     player.model = mp.joaat('player_zero');
     player.spawn(new mp.Vector3(-425.517, 1123.620, 325.8543));
     player.dimension = player.id + 1;
+
     rpc.callClient(player, 'mti:authSystem')
+
+    
 
 })
 
@@ -19,6 +22,7 @@ rpc.register('registerInfos', async ({username, email, password}) => {
         const player = mp.players.at(0);
         if(alreadyUser?.username == username) return player.sendToast({type: "error", message: "The username already exists!"})
         if(alreadyMail?.email == email) return player.sendToast({type: "error", message: "The email address already exists!"})
+        if(username == '' || email == '' || password == '')  return player.sendToast({type: "error", message: "You cant register a account with an empty field!"})
 
         Account.create({username: username, email: email, password: password});
         player.sendToast({type: "success", message: "You have successffully registered, you can log in now!"})
