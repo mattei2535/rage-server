@@ -10,7 +10,6 @@ rpc.register('mti:authSystem', () => {
                 mp.discord.update(`mtw's project`, `Logging in..`)
         }, 100)
 
-        rpc.triggerBrowsers('mti:authSystem');
 });
 
 rpc.register('loginAuthorization', () => {

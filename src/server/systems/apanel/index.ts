@@ -47,7 +47,23 @@ rpc.register('vehicleSpawn2', () => {
             heading: player.heading,
             numberPlate: 'STAFF',
             dimension: player.dimension
-        });
+        });        
+    player.putIntoVehicle(createdCar, 0)
+    player.sendToast({type: 'success', message: 'Vehicle spawned successfully'})
+
+})
+
+rpc.register('vehicleSpawn3', () => {
+    const player = mp.players.at(0);
+    if (player.vehicle) {
+        player.vehicle.destroy()
+    }
+    const createdCar: VehicleMp = mp.vehicles.new(mp.joaat(vehicle.bmwm4), player.position,
+        {
+            heading: player.heading,
+            numberPlate: 'STAFF',
+            dimension: player.dimension
+        });        
     player.putIntoVehicle(createdCar, 0)
     player.sendToast({type: 'success', message: 'Vehicle spawned successfully'})
 
