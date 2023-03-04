@@ -7,7 +7,6 @@ mp.events.add('playerReady', async (player: PlayerMp) => {
     player.model = mp.joaat('player_zero');
     player.spawn(new mp.Vector3(-425.517, 1123.620, 325.8543));
     player.dimension = player.id + 1;
-
     rpc.callClient(player, 'mti:authSystem')
 
     
@@ -38,6 +37,7 @@ rpc.register('checkLoginData', async ({username, password}) => {
     if (User && User.password == password) {
         rpc.callClient(player, 'loginAuthorization')
         player.dimension = 0;
+        player.username = username;
         player.sendToast({type: "success", message: `Logged successfuly!`})
     }
     else return player.sendToast({type: "error", message: "Incorrect username or password!"})

@@ -12,4 +12,3 @@ main().catch(err => console.log(err));
 main().then(() => {
     console.log('[!] Database loaded succesfully');
 	}).catch((err) => console.error(err));
-
