@@ -9,8 +9,6 @@ mp.events.add('playerReady', async (player: PlayerMp) => {
     player.dimension = player.id + 1;
     rpc.callClient(player, 'mti:authSystem')
 
-    
-
 })
 
 rpc.register('registerInfos', async ({username, email, password}) => {
@@ -38,6 +36,8 @@ rpc.register('checkLoginData', async ({username, password}) => {
         rpc.callClient(player, 'loginAuthorization')
         player.dimension = 0;
         player.username = username;
+        player.money = User.money
+        rpc.triggerBrowsers(player, 'playerInfos', {money: player.money, nick: username, id: player.id})
         player.sendToast({type: "success", message: `Logged successfuly!`})
     }
     else return player.sendToast({type: "error", message: "Incorrect username or password!"})

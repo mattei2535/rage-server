@@ -7,63 +7,18 @@ rpc.register('repairVehicle', () => {
     player.sendToast({type: 'success', message: 'Vehicle repaired successfully'})
 })
 
-rpc.register('vehicleSpawn0', () => {
+rpc.register('vehicleSpawn', (model) => {
     const player = mp.players.at(0);
     if (player.vehicle) {
         player.vehicle.destroy()
     }
-    const createdCar: VehicleMp = mp.vehicles.new(mp.joaat(vehicle.ferrari), player.position,
+    // @ts-ignore
+    const createdCar: VehicleMp = mp.vehicles.new(mp.joaat(vehicle[model]), new mp.Vector3(player.position.x, player.position.y + 2, player.position.z),
         {
             heading: player.heading,
             numberPlate: 'STAFF',
             dimension: player.dimension
         });
-    player.putIntoVehicle(createdCar, 0)
-    player.sendToast({type: 'success', message: 'Vehicle spawned successfully'})
-
-})
-rpc.register('vehicleSpawn1', () => {
-    const player = mp.players.at(0);
-    if (player.vehicle) {
-        player.vehicle.destroy()
-    }
-    const createdCar: VehicleMp = mp.vehicles.new(mp.joaat(vehicle.mercedes), player.position,
-        {
-            heading: player.heading,
-            numberPlate: 'STAFF',
-            dimension: player.dimension
-        });
-    player.putIntoVehicle(createdCar, 0)
-    player.sendToast({type: 'success', message: 'Vehicle spawned successfully'})
-
-})
-rpc.register('vehicleSpawn2', () => {
-    const player = mp.players.at(0);
-    if (player.vehicle) {
-        player.vehicle.destroy()
-    }
-    const createdCar: VehicleMp = mp.vehicles.new(mp.joaat(vehicle.bugatti), player.position,
-        {
-            heading: player.heading,
-            numberPlate: 'STAFF',
-            dimension: player.dimension
-        });        
-    player.putIntoVehicle(createdCar, 0)
-    player.sendToast({type: 'success', message: 'Vehicle spawned successfully'})
-
-})
-
-rpc.register('vehicleSpawn3', () => {
-    const player = mp.players.at(0);
-    if (player.vehicle) {
-        player.vehicle.destroy()
-    }
-    const createdCar: VehicleMp = mp.vehicles.new(mp.joaat(vehicle.bmwm4), player.position,
-        {
-            heading: player.heading,
-            numberPlate: 'STAFF',
-            dimension: player.dimension
-        });        
     player.putIntoVehicle(createdCar, 0)
     player.sendToast({type: 'success', message: 'Vehicle spawned successfully'})
 
