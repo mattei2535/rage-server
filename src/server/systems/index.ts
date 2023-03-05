@@ -1,2 +1,2 @@
-import './apanel/index'
+import './commands/index'
 import './auth/index'

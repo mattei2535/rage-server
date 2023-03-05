@@ -1,5 +1,6 @@
 import './systems'
 import './utils'
+import './player'
 
 // CEF CONNECTION
 
